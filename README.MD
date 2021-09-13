@@ -84,7 +84,6 @@ if (data == 5) {
 } else return false
 // Good
 return data == 5
-
 ```
 -   Using boolean variable with prefix is_
 ```
@@ -92,7 +91,6 @@ return data == 5
 Bool value = false
 // Good
 Bool isValue = false
-
 ```
 
 -   Limit check variable many times lead to slow code
@@ -105,7 +103,6 @@ for (int i = 0, i < data.length; i++){
 for (int i = 0, size = data.length, i < size; i++){
     
 }
-
 ```
 -   Always check data != null when using if you don't know data other than null or not
 ```
@@ -114,10 +111,9 @@ if (data.value == 5) {
 
 }
 // Good
-if (data != null or data.value == 5) {
+if (data != null and data.value == 5) {
 
 }
-
 ```
 
 
