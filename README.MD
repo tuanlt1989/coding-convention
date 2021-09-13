@@ -1,19 +1,22 @@
-                Coding convention
 # Table content
 * [Correctness](#correctness)
+* [Target version](#Target-version)
 * [Format](#Format)
 * [Folder structure](#Folder-structure)
 * [Naming](#Naming)
 * [Unused Code](#Unused-Code)
 * [Comment](#Comment)
-* [Utils-Extensions](#Utils-Extensions)
+* [Utils/Extensions](#Utils/Extensions)
 * [Good or bad strategy](#Good-or-bad-strategy)
 # Correctness
 -   Restrict warning in code file. Expect for some special cases.
+# Target version
+-   Should set target version minimum support.
 # Format 
 -   Always format the code you change.
 -   Don't format the entire file because it will affect the git log.
 -   You can use some format tool and config depend on the project. Ex: `prettier`, `swiftlint` ...
+-   Line wrap code in file
 # Folder structure 
 -   Should use same folder structure in all project. Except some specific folder. Ex: Stores in mobx react native, Controllers in Getx Flutter...
 -   Folder UpperCamelCase or lowercase depend on type project.
@@ -31,6 +34,7 @@
     -   `stores/controllers`: contain bussiness flow with screen (ex: LoginController vs LoginView).
 # Naming
 -   Always name files and variables explicitly.
+-   Should put name bundle with convention: com.companyname.appname. Ex: com.evo.block
 -   File
     -   Depend on rule name in a project.
     -   File name is a noun
@@ -50,6 +54,8 @@
     -   Using `lowerCamelCase`
     -   Should explicit variable name
     -   Shoud use right type (`Int`, `Long`, `BigDecimal` ...)
+    -   Boolean should have prefix `is_`
+    -   Should using private, protected, public
 -   Method
     -   Method with prefix is verb. Ex: getUserProfile
     -   Suggest should use some prefix according to the project rule so that everyone knows the meaning of the method. Ex: `render_` prefix when render layout, `on_` prefix when action of the control, `goto_` when navigation 
@@ -62,21 +68,56 @@
 -   Should comment method with `///`
 -   Always comment variable in class with `//`
 -   Comment code in method if code complicated.
-# Utils/ Extension
+# Utils/Extensions
 -   Should use util as a popular method.
 -   Put method right util file.
     Ex: Handle date put in `DateUtil`, Handle String put in `StringUtil`...
 -   If you don't know put in any file or code not specific data, you should put this method in `Util` file
 # Good or bad strategy
+ (Will update)
+-   Limit writing code too much, but code have explicit.
 
-```swift
-let message = """
-  You cannot charge the flux \
-  capacitor with a 9V battery.
-  You must use a super-charger \
-  which costs 10 credits. You currently \
-  have \(credits) credits available.
-  """
+```
+// Bad
+if (data == 5) {
+    return true
+} else return false
+// Good
+return data == 5
+
+```
+-   Using boolean variable with prefix is_
+```
+// Bad
+Bool value = false
+// Good
+Bool isValue = false
+
+```
+
+-   Limit check variable many times lead to slow code
+```
+// Bad
+for (int i = 0, i < data.length; i++){
+
+}
+// Good
+for (int i = 0, size = data.length, i < size; i++){
+    
+}
+
+```
+-   Always check data != null when using if you don't know data other than null or not
+```
+// Bad
+if (data.value == 5) {
+
+}
+// Good
+if (data != null or data.value == 5) {
+
+}
+
 ```
 
 
