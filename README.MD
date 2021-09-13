@@ -6,6 +6,8 @@
 * [Naming](#Naming)
 * [Unused Code](#Unused-Code)
 * [Comment](#Comment)
+* [Utils-Extensions](#Utils-Extensions)
+* [Good or bad strategy](#Good-or-bad-strategy)
 # Correctness
 -   Restrict warning in code file. Expect for some special cases.
 # Format 
@@ -13,16 +15,16 @@
 -   Don't format the entire file because it will affect the git log.
 -   You can use some format tool and config depend on the project. Ex: `prettier`, `swiftlint` ...
 # Folder structure 
--   Should use same folder structure in all project 
+-   Should use same folder structure in all project. Except some specific folder. Ex: Stores in mobx react native, Controllers in Getx Flutter...
 -   Folder UpperCamelCase or lowercase depend on type project.
--   Should use a word for folder
+-   Should use a word for folder and is a noun. Ex: Login, Home, User
 -   Some folders always have:
     -   `configs`: contain error code and server config 
     -   `enums`: contain enums 
     -   `views`: contain all screen in project
     -   `locales`: contain localize
     -   `models`: contain model data
-    -   `repositories`: contain repository to call api (Repository created follow by object, ex: UserRepository, ProductRepository).
+    -   `repositories`: contain repository to call api (Repository created follow by object, ex: UserRepository, ProductRepository)
     -   `utils`: contain utils for app. If don't know using what util, you maybe create your function in Utils file.
     -   `values`: contain constant, value all app
     -   `components/widgets`: contain component/widget common use many times in app, don't add component just using in one screen.
@@ -58,8 +60,25 @@
 -   Collect code in one file(maybe util) if use repeat more times.
 # Comment
 -   Should comment method with `///`
--   Always comment variable global in class with `//`
+-   Always comment variable in class with `//`
 -   Comment code in method if code complicated.
+# Utils/ Extension
+-   Should use util as a popular method.
+-   Put method right util file.
+    Ex: Handle date put in `DateUtil`, Handle String put in `StringUtil`...
+-   If you don't know put in any file or code not specific data, you should put this method in `Util` file
+# Good or bad strategy
+
+```swift
+let message = """
+  You cannot charge the flux \
+  capacitor with a 9V battery.
+  You must use a super-charger \
+  which costs 10 credits. You currently \
+  have \(credits) credits available.
+  """
+```
+
 
 
 
